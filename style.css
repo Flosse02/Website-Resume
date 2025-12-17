@@ -739,3 +739,45 @@ body {
         margin-top: 0;
     }
 }
+
+/* Popup container */
+#form-popup {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fdf6e3; /* cream color */
+  color: #333;
+  padding: 2rem 3rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 1000;
+  font-family: 'Arial', sans-serif;
+  max-width: 400px;
+  width: 90%;
+}
+
+/* Popup text */
+#form-popup p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Close button */
+#form-popup button {
+  background: #ffda6a; /* yellow */
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Hover effect for button */
+#form-popup button:hover {
+  background: #ffc107;
+}
+

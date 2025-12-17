@@ -204,6 +204,38 @@
 
   });
 
+  const form = document.getElementById('contact-form');
+  const popup = document.getElementById('form-popup');
+  const closeBtn = document.getElementById('close-popup');
+  form.addEventListener('submit', async function(event) {
+    event.preventDefault(); // stop redirect
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        popup.style.display = 'block'; // show popup
+        form.reset();
+      } else {
+        alert('Oops! There was a problem submitting your form.');
+      }
+    } catch (error) {
+      alert('Oops! There was a problem submitting your form.');
+    }
+  });
+
+// Close popup button
+closeBtn.addEventListener('click', () => {
+  popup.style.display = 'none';
+});
+
+
   // Enhanced Menu Toggle Functionality with Animations
   document.addEventListener('DOMContentLoaded', function () {
     const menuBtn = document.querySelector('.menu-toggle-btn');

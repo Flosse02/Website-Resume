@@ -512,18 +512,17 @@
             Feel free to reach out for collaborations or just a friendly hello!
           </p>
         </div>
-
-        <div class="col-md-6" data-aos="fade-left">
-          <form class="d-flex flex-column gap-4">
-            <input type="text" class="form-control-custom form-control" placeholder="Your name here..." />
-            <input type="email" class="form-control-custom form-control" placeholder="Your email here..." />
-            <textarea class="form-control-custom form-control" placeholder="Your message here..." rows="4"></textarea>
-            <button class="btn btn-custom d-flex align-items-center justify-content-center gap-2">
-              <span>Send Message</span>
-              <i class="fas fa-arrow-right"></i>
-            </button>
-          </form>
-        </div>
+          <div class="col-md-6" data-aos="fade-left">
+            <form id=contact-form class="d-flex flex-column gap-4" action="https://formspree.io/f/xrbnnyqy" method="POST">
+              <input type="text" class="form-control-custom form-control" name="name" placeholder="Your name here..." />
+              <input type="email" class="form-control-custom form-control" name="email" placeholder="Your email here..." />
+              <textarea class="form-control-custom form-control" name="message" placeholder="Your message here..." rows="4"></textarea>
+              <button class="btn btn-custom d-flex align-items-center justify-content-center gap-2">
+                <span>Send Message</span>
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
       </div>
     </div>
   </section>
@@ -538,16 +537,8 @@
             Follow me to see what I'm up to next!
           </p>
           <div class="d-flex flex-wrap gap-3">
-            <a href="#"><i class="fab fa-skype social-icon text-light-custom"></i></a>
-            <a href="#"><i class="fab fa-snapchat social-icon text-light-custom"></i></a>
-            <a href="#"><i class="fab fa-telegram social-icon text-light-custom"></i></a>
-            <a href="#"><i class="fab fa-tumblr social-icon text-light-custom"></i></a>
-            <a href="#"><i class="fab fa-twitter social-icon text-light-custom"></i></a>
-            <a href="#"><i class="fab fa-whatsapp social-icon text-light-custom"></i></a>
-            <a href="#"><i class="fab fa-github social-icon text-light-custom"></i></a>
-            <a href="#"><i class="fab fa-facebook-f social-icon text-light-custom"></i></a>
-            <a href="#"><i class="fab fa-facebook-messenger social-icon text-light-custom"></i></a>
-            <a href="#"><i class="fab fa-behance social-icon text-light-custom"></i></a>
+            <a href="https://www.linkedin.com/in/ewan-van-de-nadort/" class="me-3" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Flosse02" class="me-3" target="_blank"><i class="fab fa-github"></i></a>
           </div>
         </div>
 
@@ -574,6 +565,12 @@
       </div>
     </div>
   </footer>
+
+  <div id="form-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%);
+      background:#fff; padding:2rem; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.3); z-index:1000;">
+    <p>Thanks! Your message has been sent.</p>
+    <button onclick="document.getElementById('form-popup').style.display='none'">Close</button>
+  </div>
 
   <!-- Bootstrap JS Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
