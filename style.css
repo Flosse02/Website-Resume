@@ -741,7 +741,7 @@ body {
 }
 
 /* Popup container */
-#form-popup {
+.form-popup {
   display: none; /* hidden by default */
   position: fixed;
   top: 50%;
@@ -760,13 +760,13 @@ body {
 }
 
 /* Popup text */
-#form-popup p {
+.form-popup p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
 
 /* Close button */
-#form-popup button {
+.form-popup button {
   background: #ffda6a; /* yellow */
   border: none;
   padding: 0.6rem 1.5rem;
@@ -777,7 +777,8 @@ body {
 }
 
 /* Hover effect for button */
-#form-popup button:hover {
+.form-popup button:hover {
   background: #ffc107;
 }
+
 

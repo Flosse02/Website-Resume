@@ -204,38 +204,46 @@
 
   });
 
-  const form = document.getElementById('contact-form');
-  const popup = document.getElementById('form-popup');
-  const closeBtn = document.getElementById('close-popup');
-  form.addEventListener('submit', async function(event) {
-    event.preventDefault(); // stop redirect
+document.addEventListener('DOMContentLoaded', () => {
+  const forms = document.querySelectorAll('form[id^="contact-form"]');
 
-    const formData = new FormData(form);
+  forms.forEach(form => {
+    // popup ID derived from form ID
+    const popupId = form.id.replace('contact-form', 'form-popup');
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
 
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
+    const closeBtn = popup.querySelector('.close-popup');
 
-      if (response.ok) {
-        popup.style.display = 'block'; // show popup
-        form.reset();
-      } else {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          popup.style.display = 'block';
+          form.reset();
+        } else {
+          alert('Oops! There was a problem submitting your form.');
+        }
+      } catch (err) {
         alert('Oops! There was a problem submitting your form.');
       }
-    } catch (error) {
-      alert('Oops! There was a problem submitting your form.');
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+      });
     }
   });
-
-// Close popup button
-closeBtn.addEventListener('click', () => {
-  popup.style.display = 'none';
 });
-
-
   // Enhanced Menu Toggle Functionality with Animations
   document.addEventListener('DOMContentLoaded', function () {
     const menuBtn = document.querySelector('.menu-toggle-btn');
