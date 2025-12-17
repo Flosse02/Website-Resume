@@ -208,42 +208,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const forms = document.querySelectorAll('form[id^="contact-form"]');
 
   forms.forEach(form => {
-    // popup ID derived from form ID
     const popupId = form.id.replace('contact-form', 'form-popup');
     const popup = document.getElementById(popupId);
     if (!popup) return;
 
     const closeBtn = popup.querySelector('.close-popup');
 
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const formData = new FormData(form);
+    form.addEventListener('submit', async e => {
+      e.preventDefault();  // stop default Formspree
+
+      const data = new FormData(form);
 
       try {
-        const response = await fetch(form.action, {
+        const res = await fetch(form.action, {
           method: form.method,
-          body: formData,
+          body: data,
           headers: { 'Accept': 'application/json' }
         });
 
-        if (response.ok) {
-          popup.style.display = 'block';
-          form.reset();
-        } else {
-          alert('Oops! There was a problem submitting your form.');
-        }
-      } catch (err) {
-        alert('Oops! There was a problem submitting your form.');
+        if (res.ok) popup.style.display = 'block';
+        form.reset();
+      } catch(err) {
+        alert('Oops! Submission failed.');
       }
     });
 
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
-        popup.style.display = 'none';
-      });
-    }
+    closeBtn?.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
   });
 });
+
   // Enhanced Menu Toggle Functionality with Animations
   document.addEventListener('DOMContentLoaded', function () {
     const menuBtn = document.querySelector('.menu-toggle-btn');
