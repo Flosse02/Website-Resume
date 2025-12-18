@@ -204,83 +204,44 @@
 
   });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const forms = document.querySelectorAll('form[id^="contact-form"]');
+  document.addEventListener("DOMContentLoaded", () => {
 
-  forms.forEach(form => {
-    const popupId = form.id.replace('contact-form', 'form-popup');
-    const popup = document.getElementById(popupId);
-    if (!popup) return;
+  const openBtn = document.getElementById("openMenuBtn");
 
-    const closeBtn = popup.querySelector('.close-popup');
+  fetch("navbar.html")
+  .then(res => res.ok ? res.text() : Promise.reject("Failed to fetch"))
+  .then(html => {
+    document.getElementById("navbarContainer").innerHTML = html;
 
-    form.addEventListener('submit', async e => {
-      e.preventDefault();  // stop default Formspree
+    const menu = document.getElementById("fullscreenMenu");
+    const openBtn = document.getElementById("openMenuBtn");
+    const closeBtn = document.getElementById("closeMenuBtn");
 
-      const data = new FormData(form);
-
-      try {
-        const res = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) popup.style.display = 'block';
-        form.reset();
-      } catch(err) {
-        alert('Oops! Submission failed.');
-      }
+    openBtn.addEventListener("click", () => {
+      fullscreenMenu.style.display = "block";
+      setTimeout(() => {
+        fullscreenMenu.classList.add("active");
+      }, 50);
+      document.body.style.overflow = "hidden";
     });
 
-    closeBtn?.addEventListener('click', () => {
-      popup.style.display = 'none';
+    closeBtn.addEventListener("click", () => {
+      menu.classList.remove("open");
+      document.body.style.overflow = "auto";
     });
-  });
+
+    menu.querySelectorAll(".menu-link").forEach(link => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("open");
+        document.body.style.overflow = "auto";
+      });
+    });
+  })
+  .catch(err => console.error(err));
+
 });
 
-  // Enhanced Menu Toggle Functionality with Animations
-  document.addEventListener('DOMContentLoaded', function () {
-    const menuBtn = document.querySelector('.menu-toggle-btn');
-    const closeBtn = document.getElementById('closeMenuBtn');
-    const fullscreenMenu = document.getElementById('fullscreenMenu');
 
-    if (menuBtn) {
-      menuBtn.addEventListener('click', function () {
-        fullscreenMenu.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-        // Trigger animation after display is set
-        setTimeout(() => {
-          fullscreenMenu.classList.add('active');
-        }, 10);
-      });
-    }
 
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function () {
-        // Start closing animation
-        fullscreenMenu.classList.remove('active');
-
-        // Wait for animation to complete before hiding
-        setTimeout(() => {
-          fullscreenMenu.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }, 800); // Match this with your CSS transition duration
-      });
-    }
-
-    // Close menu when clicking on a link
-    const menuLinks = document.querySelectorAll('.menu-link');
-    menuLinks.forEach(link => {
-      link.addEventListener('click', function () {
-        fullscreenMenu.classList.remove('active');
-        setTimeout(() => {
-          fullscreenMenu.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }, 800);
-      });
-    });
-
-  });
 
 })(jQuery);

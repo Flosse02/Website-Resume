@@ -160,32 +160,8 @@
   </svg>
 
   <!-- Fullscreen Menu Overlay -->
-  <div id="fullscreenMenu" class="fullscreen-menu-overlay">
-    <div class="container h-100">
-      <div class="row h-100 align-items-center">
-        <div class="col-lg-7">
-          <button id="closeMenuBtn" class="close-menu-btn position-absolute top-0 end-0 m-4">
-            <i class="fas fa-times fs-1"></i>
-          </button>
+  <div id="navbarContainer"></div>
 
-          <nav class="fullscreen-menu-nav">
-            <ul class="list-unstyled">
-              <li><a href="index.html" class="menu-link">Home</a></li>
-              <li><a href="contact.html" class="menu-link">Contact</a></li>
-            </ul>
-          </nav>
-
-          <div class="menu-social-links mt-5">
-            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
-          </div>
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Header/Hero Section -->
   <header class="position-relative">
@@ -194,7 +170,7 @@
       <nav class="d-flex justify-content-between">
         <div class="text-light-custom content-title fw-bold" data-aos="fade-right" data-aos-duration="1000">Ewan van de Nadort</div>
 
-        <button class="menu-toggle-btn btn d-flex align-items-center gap-2" data-aos="fade-left"
+        <button id="openMenuBtn" class="menu-toggle-btn btn d-flex align-items-center gap-2" data-aos="fade-left"
           data-aos-duration="1000">
           <span class="text-light-custom fw-bold">MENU</span>
           <i class="fas fa-bars text-light-custom"></i>
@@ -410,86 +386,49 @@
       <div class="swiper worksSwiper mb-5" data-aos="fade-up" data-aos-delay="200">
         <div class="swiper-wrapper">
 
+          <!-- Online Resume  https://github.com/Flosse02/Website-Resume --> 
           <div class="swiper-slide">
             <div class="card card-custom">
-              <img src="images/placeholder.png" class="img-fluid" alt="Solaris App Interface" />
+              <img src="images/onlineResume.jpg" class="img-fluid" alt="Solaris App Interface" />
               <div class="card-body text-center">
                 <div class="date-text mb-2">UI/UX Design</div>
-                <h3 class="subtitle">Solaris App Interface</h3>
+                <h3 class="subtitle">Online Resume</h3>
               </div>
             </div>
           </div>
 
+          <!-- Smart Home V2  https://github.com/Flosse02/smartHomeV2 --> 
           <div class="swiper-slide">
             <div class="card card-custom">
-              <img src="images/placeholder.png" class="img-fluid" alt="Urban Cafe Branding" />
+              <img src="images/smartHomeV2.jpg" class="img-fluid" alt="Urban Cafe Branding" />
               <div class="card-body text-center">
-                <div class="date-text mb-2">Brand Identity</div>
-                <h3 class="subtitle">Urban Cafe Branding</h3>
+                <div class="date-text mb-2">UI/UX Design + Electrical Engineering</div>
+                <h3 class="subtitle">Smarthome Device Version 2</h3>
               </div>
             </div>
           </div>
 
+          <!-- Smart Home https://github.com/Flosse02/smarthome --> 
           <div class="swiper-slide">
             <div class="card card-custom">
-              <img src="images/placeholder.png" class="img-fluid" alt="Tech Conference 2023" />
+              <img src="images/smartHome.jpg" class="img-fluid" alt="Tech Conference 2023" />
               <div class="card-body text-center">
-                <div class="date-text mb-2">Event Design</div>
-                <h3 class="subtitle">Tech Conference 2023</h3>
+                <div class="date-text mb-2">UI/UX Design + Electrical Engineering</div>
+                <h3 class="subtitle">Smarthome Device</h3>
               </div>
             </div>
           </div>
 
+          <!-- Wysp https://github.com/arlen-brower/Wysp --> 
           <div class="swiper-slide">
             <div class="card card-custom">
-              <img src="images/placeholder.png" class="img-fluid" alt="Nova Packaging Design" />
+              <img src="images/Wysp.jpg" class="img-fluid" alt="Tech Conference 2023" />
               <div class="card-body text-center">
-                <div class="date-text mb-2">Product Design</div>
-                <h3 class="subtitle">Nova Packaging Design</h3>
+                <div class="date-text mb-2">UI/UX Design + Backend</div>
+                <h3 class="subtitle">Wysp</h3>
               </div>
             </div>
           </div>
-
-          <div class="swiper-slide">
-            <div class="card card-custom">
-              <img src="images/placeholder.png" class="img-fluid" alt="Elevate Web Design" />
-              <div class="card-body text-center">
-                <div class="date-text mb-2">Web Design</div>
-                <h3 class="subtitle">Elevate Web Design</h3>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="card card-custom">
-              <img src="images/placeholder.png" class="img-fluid" alt="Zenith Mobile App" />
-              <div class="card-body text-center">
-                <div class="date-text mb-2">App Development</div>
-                <h3 class="subtitle">Zenith Mobile App</h3>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="card card-custom">
-              <img src="images/placeholder.png" class="img-fluid" alt="Aurora Illustration Set" />
-              <div class="card-body text-center">
-                <div class="date-text mb-2">Illustration</div>
-                <h3 class="subtitle">Aurora Illustration Set</h3>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <div class="card card-custom">
-              <img src="images/placeholder.png" class="img-fluid" alt="Pulse Marketing Campaign" />
-              <div class="card-body text-center">
-                <div class="date-text mb-2">Marketing</div>
-                <h3 class="subtitle">Pulse Marketing Campaign</h3>
-              </div>
-            </div>
-          </div>
-
         </div>
 
         <!-- Add Pagination -->
@@ -556,8 +495,7 @@
 
         <div class="col-md-2">
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="#" class="footer-link">Blogs</a></li>
-            <li class="mb-2"><a href="#" class="footer-link">Contact</a></li>
+            <li class="mb-2"><a href="contact.html" class="footer-link">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -580,6 +518,8 @@
   <script src="js/plugins.js"></script>
   <!-- Script js -->
   <script src="js/script.js"></script>
+  <!-- Menu JS -->
+  <script src="js/menu.js"></script>
 </body>
 
 </html>
