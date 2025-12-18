@@ -204,6 +204,22 @@
 
   });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const socialsContainer = document.getElementById("socialsContainer");
+
+    fetch("socials.html")
+        .then(response => {
+            if (!response.ok) throw new Error("Network response was not ok");
+            return response.text();
+        })
+        .then(data => {
+            socialsContainer.innerHTML = data;
+        })
+        .catch(error => {
+            console.error("Error loading social links:", error);
+        });
+});
+
   document.addEventListener("DOMContentLoaded", () => {
 
   const openBtn = document.getElementById("openMenuBtn");
@@ -226,8 +242,8 @@
     });
 
     closeBtn.addEventListener("click", () => {
-      menu.classList.remove("open");
-      document.body.style.overflow = "auto";
+      fullscreenMenu.classList.remove("active");
+      document.body.style.overflow = "";
     });
 
     menu.querySelectorAll(".menu-link").forEach(link => {
