@@ -207,7 +207,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const socialsContainer = document.getElementById("socialsContainer");
 
-    fetch("socials.html")
+    fetch("components/socials.html")
         .then(response => {
             if (!response.ok) throw new Error("Network response was not ok");
             return response.text();
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const openBtn = document.getElementById("openMenuBtn");
 
-  fetch("navbar.html")
+  fetch("components/navbar.html")
   .then(res => res.ok ? res.text() : Promise.reject("Failed to fetch"))
   .then(html => {
     document.getElementById("navbarContainer").innerHTML = html;
