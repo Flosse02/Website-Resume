@@ -206,25 +206,27 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  let socialsHTML = "";
+  fetch("/components/socials.html")
+    .then(res => res.text())
+    .then(html => socialsHTML = html)
+    .catch(err => console.error("Socials fetch error:", err));
+
   fetch("/components/footer.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("footerContainer").innerHTML = html;
-      return fetch("/components/socials.html");
+      const footerSocials = document.getElementById("socialsContainerFooter");
+      if (footerSocials) footerSocials.innerHTML = socialsHTML;
     })
-    .then(res => res.text())
-    .then(html => {
-      const socialsContainer = document.getElementById("socialsContainer");
-      if (socialsContainer) {
-        socialsContainer.innerHTML = html;
-      }
-    })
-    .catch(err => console.error("Footer/Socials error:", err));
+    .catch(err => console.error("footer error:", err));
 
   fetch("/components/header.html")
     .then(res => res.ok ? res.text() : Promise.reject("Failed to fetch header"))
     .then(html => {
       document.getElementById("headerContainer").innerHTML = html;
+      const headerSocials = document.getElementById("socialsContainerHeader");
+      if (headerSocials) headerSocials.innerHTML = socialsHTML;
 
       const menu = document.getElementById("fullscreenMenu");
       const openBtn = document.getElementById("openMenuBtn");
@@ -254,7 +256,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     })
     .catch(err => console.error("header error:", err));
-
 });
 
 })(jQuery);
