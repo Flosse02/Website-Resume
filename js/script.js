@@ -205,64 +205,56 @@
   });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const socialsContainer = document.getElementById("socialsContainer");
 
-    fetch("/components/socials.html")
-        .then(response => {
-            if (!response.ok) throw new Error("Network response was not ok");
-            return response.text();
-        })
-        .then(data => {
-            socialsContainer.innerHTML = data;
-        })
-        .catch(error => {
-            console.error("Error loading social links:", error);
-            console.log("Failed to load social links");
-        });
-});
+  /* ---------- FOOTER ---------- */
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footerContainer").innerHTML = html;
 
-  document.addEventListener("DOMContentLoaded", () => {
+      // Footer is now in the DOM → load socials
+      return fetch("/components/socials.html");
+    })
+    .then(res => res.text())
+    .then(html => {
+      const socialsContainer = document.getElementById("socialsContainer");
+      if (socialsContainer) {
+        socialsContainer.innerHTML = html;
+      }
+    })
+    .catch(err => console.error("Footer/Socials error:", err));
 
-  const openBtn = document.getElementById("openMenuBtn");
 
+  /* ---------- NAVBAR ---------- */
   fetch("/components/navbar.html")
-  .then(res => res.ok ? res.text() : Promise.reject("Failed to fetch"))
-  .then(html => {
-    document.getElementById("navbarContainer").innerHTML = html;
+    .then(res => res.ok ? res.text() : Promise.reject("Failed to fetch navbar"))
+    .then(html => {
+      document.getElementById("navbarContainer").innerHTML = html;
 
-    const menu = document.getElementById("fullscreenMenu");
-    const openBtn = document.getElementById("openMenuBtn");
-    const closeBtn = document.getElementById("closeMenuBtn");
+      const menu = document.getElementById("fullscreenMenu");
+      const openBtn = document.getElementById("openMenuBtn");
+      const closeBtn = document.getElementById("closeMenuBtn");
 
-    openBtn.addEventListener("click", () => {
-      fullscreenMenu.style.display = "block";
-      setTimeout(() => {
-        fullscreenMenu.classList.add("active");
-      }, 50);
-      document.body.style.overflow = "hidden";
-    });
-
-    closeBtn.addEventListener("click", () => {
-      fullscreenMenu.classList.remove("active");
-      document.body.style.overflow = "";
-    });
-
-    menu.querySelectorAll(".menu-link").forEach(link => {
-      link.addEventListener("click", () => {
-        menu.classList.remove("open");
-        document.body.style.overflow = "auto";
+      openBtn.addEventListener("click", () => {
+        menu.style.display = "block";
+        setTimeout(() => menu.classList.add("active"), 50);
+        document.body.style.overflow = "hidden";
       });
-    });
-  })
-  .catch(err => console.error(err));
+
+      closeBtn.addEventListener("click", () => {
+        menu.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+
+      menu.querySelectorAll(".menu-link").forEach(link => {
+        link.addEventListener("click", () => {
+          menu.classList.remove("active");
+          document.body.style.overflow = "";
+        });
+      });
+    })
+    .catch(err => console.error("Navbar error:", err));
 
 });
-
-fetch("/components/footer.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("footerContainer").innerHTML = html;
-  });
-
 
 })(jQuery);
