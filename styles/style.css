@@ -782,3 +782,8 @@ body {
 }
 
 
+#headerContainer header {
+  background-color: var(--primary-color);  /* temporary, so you see it */
+  color: white;
+  padding: 1rem 2rem;
+}

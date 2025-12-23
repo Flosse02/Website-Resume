@@ -206,13 +206,10 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ---------- FOOTER ---------- */
   fetch("/components/footer.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("footerContainer").innerHTML = html;
-
-      // Footer is now in the DOM → load socials
       return fetch("/components/socials.html");
     })
     .then(res => res.text())
@@ -224,16 +221,19 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Footer/Socials error:", err));
 
-
-  /* ---------- NAVBAR ---------- */
-  fetch("/components/navbar.html")
-    .then(res => res.ok ? res.text() : Promise.reject("Failed to fetch navbar"))
+  fetch("/components/header.html")
+    .then(res => res.ok ? res.text() : Promise.reject("Failed to fetch header"))
     .then(html => {
-      document.getElementById("navbarContainer").innerHTML = html;
+      document.getElementById("headerContainer").innerHTML = html;
 
       const menu = document.getElementById("fullscreenMenu");
       const openBtn = document.getElementById("openMenuBtn");
       const closeBtn = document.getElementById("closeMenuBtn");
+
+      if (!menu || !openBtn || !closeBtn) {
+      console.warn("header elements missing on this page menu status: ", menu, openBtn, closeBtn);
+      return;
+    }
 
       openBtn.addEventListener("click", () => {
         menu.style.display = "block";
@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     })
-    .catch(err => console.error("Navbar error:", err));
+    .catch(err => console.error("header error:", err));
 
 });
 
