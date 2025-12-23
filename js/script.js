@@ -207,7 +207,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const socialsContainer = document.getElementById("socialsContainer");
 
-    fetch("components/socials.html")
+    fetch("/components/socials.html")
         .then(response => {
             if (!response.ok) throw new Error("Network response was not ok");
             return response.text();
@@ -217,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => {
             console.error("Error loading social links:", error);
+            console.log("Failed to load social links");
         });
 });
 
@@ -224,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const openBtn = document.getElementById("openMenuBtn");
 
-  fetch("components/navbar.html")
+  fetch("/components/navbar.html")
   .then(res => res.ok ? res.text() : Promise.reject("Failed to fetch"))
   .then(html => {
     document.getElementById("navbarContainer").innerHTML = html;
@@ -257,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-fetch("../components/footer.html")
+fetch("/components/footer.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("footerContainer").innerHTML = html;
