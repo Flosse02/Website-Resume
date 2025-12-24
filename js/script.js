@@ -218,6 +218,15 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("footerContainer").innerHTML = html;
       const footerSocials = document.getElementById("socialsContainerFooter");
       if (footerSocials) footerSocials.innerHTML = socialsHTML;
+      const footerNav = document.getElementById("footerNav");
+      if (footerNav && typeof pages !== "undefined") {
+        let htmlNav = '<ul class="list-unstyled">';
+        pages.forEach(p => {
+          htmlNav += `<li class="mb-2"><a href="${p.link}" class="footer-link">${p.title}</a></li>`;
+        });
+        htmlNav += '</ul>';
+        footerNav.innerHTML = htmlNav;
+      }
     })
     .catch(err => console.error("footer error:", err));
 
@@ -227,6 +236,16 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("headerContainer").innerHTML = html;
       const headerSocials = document.getElementById("socialsContainerHeader");
       if (headerSocials) headerSocials.innerHTML = socialsHTML;
+
+      const headerNav = document.getElementById("headerNav");
+      if (headerNav && typeof pages !== "undefined") {
+        let htmlNav = '<ul class="list-unstyled">';
+        pages.forEach(p => {
+          htmlNav += `<li class="mb-2"><a href="${p.link}" class="footer-link">${p.title}</a></li>`;
+        });
+        htmlNav += '</ul>';
+        headerNav.innerHTML = htmlNav;
+      }
 
       const menu = document.getElementById("fullscreenMenu");
       const openBtn = document.getElementById("openMenuBtn");
@@ -352,6 +371,20 @@ if (typeof projects !== "undefined") {
       });
     });
   }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navContainers = document.querySelectorAll(".nav-container");
+
+  navContainers.forEach(container => {
+    let html = '<ul class="list-unstyled">';
+    pages.forEach(p => {
+      html += `<li class="mb-2"><a href="${p.link}" class="footer-link">${p.title}</a></li>`;
+    });
+    html += '</ul>';
+    container.innerHTML = html;
+  });
+});
+
 
 }
 
