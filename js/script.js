@@ -306,7 +306,7 @@ if (typeof projects !== "undefined") {
   if (swiperWrapper) {
     projects.forEach(p => {
       swiperWrapper.innerHTML += `
-        <div class="swiper-slide">
+        <div class="swiper-slide" style="cursor: pointer">
           <div class="card card-custom project-card" data-project-id="${p.id}">
             <img src="${p.image}" class="img-fluid" alt="${p.title}">
             <div class="card-body text-center">
@@ -352,7 +352,7 @@ if (typeof projects !== "undefined") {
     projects.forEach(p => {
       grid.innerHTML += `
         <div class="col-md-4 mb-4">
-          <div class="card card-custom project-card h-100" data-project-id="${p.id}">
+          <div class="card card-custom project-card h-100" data-project-id="${p.id}" style="cursor: pointer">
             <img src="${p.image}" class="img-fluid" alt="${p.title}">
             <div class="card-body text-center">
               <div class="date-text mb-2">${p.category}</div>
