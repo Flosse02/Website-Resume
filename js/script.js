@@ -258,4 +258,101 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("header error:", err));
 });
 
+if (typeof projects !== "undefined") {
+
+  // Modal function — define once, globally within this block
+  function openProjectModal(projectId) {
+    const project = projects.find(p => p.id === projectId);
+    if (!project) return;
+
+    document.getElementById("projectModalTitle").textContent = project.title;
+    document.getElementById("projectModalImage").src = project.image;
+    document.getElementById("projectModalDescription").textContent = project.description;
+
+    const list = document.getElementById("projectModalFeatures");
+    list.innerHTML = "";
+    project.features.forEach(f => {
+      const li = document.createElement("li");
+      li.textContent = f;
+      list.appendChild(li);
+    });
+
+    document.getElementById("projectModalGithub").href = project.github;
+
+    new bootstrap.Modal(document.getElementById("projectModal")).show();
+  }
+
+  // 1. Swiper (home page)
+  const swiperWrapper = document.getElementById("projectsSwiper");
+  if (swiperWrapper) {
+    projects.forEach(p => {
+      swiperWrapper.innerHTML += `
+        <div class="swiper-slide">
+          <div class="card card-custom project-card" data-project-id="${p.id}">
+            <img src="${p.image}" class="img-fluid" alt="${p.title}">
+            <div class="card-body text-center">
+              <div class="date-text mb-2">${p.category}</div>
+              <h3 class="subtitle">${p.title}</h3>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    // Attach click listeners for swiper cards
+    document.querySelectorAll(".project-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const id = card.dataset.projectId;
+        openProjectModal(id);
+      });
+    });
+
+    // Initialize Swiper AFTER slides added
+    new Swiper(".worksSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1200: { slidesPerView: 3 }
+      }
+    });
+  }
+
+  // 2. Projects grid (projects.html)
+  const grid = document.getElementById("projectsGrid");
+  if (grid) {
+    projects.forEach(p => {
+      grid.innerHTML += `
+        <div class="col-md-4 mb-4">
+          <div class="card card-custom project-card h-100" data-project-id="${p.id}">
+            <img src="${p.image}" class="img-fluid" alt="${p.title}">
+            <div class="card-body text-center">
+              <div class="date-text mb-2">${p.category}</div>
+              <h3 class="subtitle">${p.title}</h3>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    // Attach click listeners for grid cards
+    document.querySelectorAll(".project-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const id = card.dataset.projectId;
+        openProjectModal(id);
+      });
+    });
+  }
+
+}
+
 })(jQuery);

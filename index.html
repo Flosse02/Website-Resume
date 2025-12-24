@@ -231,69 +231,30 @@
 
   <!-- Latest Works Section with Swiper -->
   <section class="py-5 my-5 position-relative">
-    <div class="bg-light-alt position-absolute bottom-0 start-0 w-100" style="height: 50%; border-radius: 20px;"></div>
+    <div class="bg-light-alt position-absolute bottom-0 start-0 w-100"
+        style="height: 50%; border-radius: 20px;"></div>
 
     <div class="container position-relative">
-      <h2 class="content-title text-center mb-5" data-aos="fade-up">My Latest Works</h2>
+      <h2 class="content-title text-center mb-5" data-aos="fade-up">
+        My Latest Works
+      </h2>
 
-      <!-- Swiper Works -->
-      <div class="swiper worksSwiper mb-5" data-aos="fade-up" data-aos-delay="200">
-        <div class="swiper-wrapper">
+      <!-- Swiper -->
+      <div class="swiper worksSwiper mb-5"
+          data-aos="fade-up"
+          data-aos-delay="200">
 
-          <!-- Online Resume  https://github.com/Flosse02/Website-Resume --> 
-          <div class="swiper-slide">
-            <div class="card card-custom">
-              <img src="images/onlineResume.jpg" class="img-fluid" alt="Solaris App Interface" />
-              <div class="card-body text-center">
-                <div class="date-text mb-2">UI/UX Design</div>
-                <h3 class="subtitle">Online Resume</h3>
-              </div>
-            </div>
-          </div>
+        <!-- 👇 JS will populate this -->
+        <div class="swiper-wrapper" id="projectsSwiper"></div>
 
-          <!-- Smart Home V2  https://github.com/Flosse02/smartHomeV2 --> 
-          <div class="swiper-slide">
-            <div class="card card-custom">
-              <img src="images/smartHomeV2.jpg" class="img-fluid" alt="Urban Cafe Branding" />
-              <div class="card-body text-center">
-                <div class="date-text mb-2">UI/UX Design + Electrical Engineering</div>
-                <h3 class="subtitle">Smarthome Device Version 2</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Smart Home https://github.com/Flosse02/smarthome --> 
-          <div class="swiper-slide">
-            <div class="card card-custom">
-              <img src="images/smartHome.jpg" class="img-fluid" alt="Tech Conference 2023" />
-              <div class="card-body text-center">
-                <div class="date-text mb-2">UI/UX Design + Electrical Engineering</div>
-                <h3 class="subtitle">Smarthome Device</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Wysp https://github.com/arlen-brower/Wysp --> 
-          <div class="swiper-slide">
-            <div class="card card-custom">
-              <img src="images/Wysp.jpg" class="img-fluid" alt="Tech Conference 2023" />
-              <div class="card-body text-center">
-                <div class="date-text mb-2">UI/UX Design + Backend</div>
-                <h3 class="subtitle">Wysp</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Add Pagination -->
+        <!-- Controls -->
         <div class="swiper-pagination"></div>
-
-        <!-- Add Navigation -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
       </div>
     </div>
   </section>
+
 
   <!-- CTA Section -->
   <section class="py-5 my-5 bg-light-alt rounded-5 m-4" data-aos="clip-bottom">
@@ -329,12 +290,24 @@
   <div id="footerContainer"></div>
 
 
+  <div id="projectModalContainer"></div>
+
+  <script>
+  fetch("components/projectModals.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("projectModalContainer").innerHTML = html;
+    });
+  </script>
+
   <!-- Bootstrap JS Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- JQuery js -->
   <script src="js/jquery-1.11.0.min.js"></script>
   <!-- Plugins js -->
   <script src="js/plugins.js"></script>
+  <!-- Script js -->
+  <script src="/data/projectData.js"></script>
   <!-- Script js -->
   <script src="js/script.js"></script>
 </body>
