@@ -20,9 +20,9 @@ const projects = [
     image: "/images/smartHome.jpg",
     description: "A basic IOT based smarthome with google calendar integration, music playback and basic home automation. (ABANDONED)",
     features: [
-      "Custom PCB",
-      "ESP-based control",
-      "Mobile-friendly dashboard"
+      "Custom Raspberry Pi setup",
+      "Works with Google Calendar",
+      "User-friendly dashboard"
     ],
     github: "https://github.com/Flosse02/smarthome"
   },
@@ -34,9 +34,9 @@ const projects = [
     image: "/images/smartHomeV2.jpg",
     description: "A basic IOT based smarthome with google calendar integration, music playback and basic home automation. This is the second version with improved features and design. (WIP)",
     features: [
-      "Custom PCB",
-      "ESP-based control",
-      "Mobile-friendly dashboard"
+      "Custom Raspberry Pi setup",
+      "Works with Google Calendar",
+      "User-friendly dashboard"
     ],
     github: "https://github.com/Flosse02/smartHomeV2"
   }
