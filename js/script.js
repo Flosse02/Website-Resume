@@ -279,24 +279,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 if (typeof projects !== "undefined") {
 
-  // Modal function — define once, globally within this block
   function openProjectModal(projectId) {
     const project = projects.find(p => p.id === projectId);
     if (!project) return;
 
-    document.getElementById("projectModalTitle").textContent = project.title;
-    document.getElementById("projectModalImage").src = project.image;
-    document.getElementById("projectModalDescription").textContent = project.description;
+    const tagsContainer = document.getElementById("projectModalTags");
+    tagsContainer.innerHTML = ""; 
 
-    const list = document.getElementById("projectModalFeatures");
-    list.innerHTML = "";
-    project.features.forEach(f => {
-      const li = document.createElement("li");
-      li.textContent = f;
-      list.appendChild(li);
+    project.features.forEach(feature => {
+      const tag = document.createElement("span");
+      tag.className = "project-tag";
+      tag.textContent = feature;
+      tagsContainer.appendChild(tag);
     });
 
+
+    document.getElementById("projectModalTitle").textContent = project.title;
+    document.getElementById("projectModalDescription").textContent = project.description;
     document.getElementById("projectModalGithub").href = project.github;
+
+    const videoElement = document.getElementById("projectModalVideo");
+    videoElement.pause();
+    videoElement.src = project.video;
+    videoElement.load();
+    videoElement.play();
 
     new bootstrap.Modal(document.getElementById("projectModal")).show();
   }
@@ -308,7 +314,8 @@ if (typeof projects !== "undefined") {
       swiperWrapper.innerHTML += `
         <div class="swiper-slide" style="cursor: pointer">
           <div class="card card-custom project-card" data-project-id="${p.id}">
-            <img src="${p.image}" class="img-fluid" alt="${p.title}">
+            <img src="${p.image}" class="card-img-top project-card-img" alt="${p.title}">
+            <div id="projectLocation" class="position-absolute top-0 end-0 m-3 badge bg-secondary">${p.location}</div>
             <div class="card-body text-center">
               <div class="date-text mb-2">${p.category}</div>
               <h3 class="subtitle">${p.title}</h3>
@@ -353,7 +360,8 @@ if (typeof projects !== "undefined") {
       grid.innerHTML += `
         <div class="col-md-4 mb-4">
           <div class="card card-custom project-card h-100" data-project-id="${p.id}" style="cursor: pointer">
-            <img src="${p.image}" class="img-fluid" alt="${p.title}">
+            <img src="${p.image}" class="card-img-top project-card-img" alt="${p.title}">
+            <div id="projectLocation" class="position-absolute top-0 end-0 m-3 badge bg-secondary">${p.location}</div>
             <div class="card-body text-center">
               <div class="date-text mb-2">${p.category}</div>
               <h3 class="subtitle">${p.title}</h3>
