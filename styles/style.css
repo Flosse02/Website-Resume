@@ -742,12 +742,12 @@ body {
 
 /* Popup container */
 .form-popup {
-  display: none; /* hidden by default */
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #fdf6e3; /* cream color */
+  background: #fdf6e3;
   color: #333;
   padding: 2rem 3rem;
   border-radius: 15px;
@@ -838,4 +838,44 @@ body {
   font-weight: 500;
   line-height: 1;
   white-space: nowrap;
+}
+
+.skills-grid {
+    display: grid;
+     grid-template-columns: repeat(5, 200px); 
+    justify-content: center;
+    gap: 20px;
+}
+
+.skill-card {
+background: var(--light-bg-alt);
+border-radius: 8px;
+padding: 20px 10px;
+text-align: center;
+transition: transform 0.2s, box-shadow 0.2s;
+cursor: pointer;
+}
+
+.skill-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.skill-icon {
+width: 50px;   
+height: 50px;
+font-size: 2.5rem;
+color: var(--text-dark);
+margin-bottom: 10px;
+}
+
+.skill-label {
+font-weight: bold;
+margin-bottom: 5px;
+display: block;
+}
+
+.skill-desc {
+font-size: 0.85rem;
+color: #555;
 }
