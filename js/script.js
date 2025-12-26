@@ -207,12 +207,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   let socialsHTML = "";
-  fetch("/components/socials.html")
+  fetch("components/socials.html")
     .then(res => res.text())
     .then(html => socialsHTML = html)
     .catch(err => console.error("Socials fetch error:", err));
 
-  fetch("/components/footer.html")
+  fetch("components/footer.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("footerContainer").innerHTML = html;
@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("footer error:", err));
 
-  fetch("/components/header.html")
+  fetch("components/header.html")
     .then(res => res.ok ? res.text() : Promise.reject("Failed to fetch header"))
     .then(html => {
       document.getElementById("headerContainer").innerHTML = html;
