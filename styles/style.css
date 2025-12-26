@@ -835,15 +835,16 @@ body {
 
 /* Skills Section */
 .skills-section { /* Grid Layout */
-  display: flex;
-  flex-wrap: wrap;
-  grid-template-columns: repeat(5, 210px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   justify-content: flex-start;
   gap: 20px;
   padding: 30px;
+  max-width: 2000px;
+  margin: 0 auto;
 }
 .skills-header { /* Section Header */
-  width: 100%;
+  grid-column: 1 / -1; 
   text-align: center;
   margin-bottom: 20px;
 
