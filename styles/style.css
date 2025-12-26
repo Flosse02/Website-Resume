@@ -740,8 +740,8 @@ body {
     }
 }
 
-/* Popup container */
-.form-popup {
+/* Popup container for contact me submission */
+.form-popup { 
   display: none;
   position: fixed;
   top: 50%;
@@ -758,16 +758,12 @@ body {
   max-width: 400px;
   width: 90%;
 }
-
-/* Popup text */
 .form-popup p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
-
-/* Close button */
 .form-popup button {
-  background: #ffda6a; /* yellow */
+  background: var(--secondary-color); 
   border: none;
   padding: 0.6rem 1.5rem;
   border-radius: 10px;
@@ -775,61 +771,58 @@ body {
   cursor: pointer;
   transition: background 0.3s;
 }
-
-/* Hover effect for button */
 .form-popup button:hover {
   background: #ffc107;
 }
 
 
+/* Header Colours */
 #headerContainer header {
-  background-color: var(--primary-color);  /* temporary, so you see it */
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--text-light);
   padding: 1rem 2rem;
 }
 
-.project-card {
+/* Project Card */
+.project-card { /* Card Container */
   height: 380px;         
   display: flex;
   flex-direction: column;
 }
-
-.project-card .card-body {
+.project-card .card-body { /* Card Body */
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #6f7f55;
-  color: #f7f4e8;
+  background-color: var(--primary-subtle-color);
+  color: var(--text-light);
   
 }
-
-.project-card .card-body .date-text {
-  color: #d9dec9;
+.project-card .card-body .date-text { /* Text */
+  color: var(--light-bg);
 }
-.project-card {
+.project-card { /* Hover Effects */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.project-card:hover {
+.project-card:hover { /* On Hover */
   transform: translateY(-6px);
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
-
-.project-card-img {
+.project-card-img { /* Image Styles */
   height: 200px;
   width: 100%;
   object-fit: cover;
   flex-shrink: 0;
 }
 
-.project-tags {
+/* Tags Styles (Little Pills) */
+.tags { /* Container for tags */
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  padding-bottom: 10px;
 }
-
-.project-tag {
+.tag { /* Individual tag styles */
   background-color: var(--primary-color);  
   color: var(--text-light);              
   padding: 0.35rem 0.75rem;
@@ -840,20 +833,19 @@ body {
   white-space: nowrap;
 }
 
-.skills-section {
+/* Skills Section */
+.skills-section { /* Grid Layout */
   display: grid;
   grid-template-columns: repeat(5, 210px);
   justify-content: center;
   gap: 20px;
 }
-
-.skills-header {
+.skills-header { /* Section Header */
   grid-column: 1 / -1;
   text-align: center;
   margin-bottom: 20px;
 }
-
-.skill-card {
+.skill-card { /* Individual Skill Card */
 background: var(--light-bg-alt);
 border-radius: 8px;
 padding: 20px 10px;
@@ -861,58 +853,48 @@ text-align: center;
 transition: transform 0.2s, box-shadow 0.2s;
 cursor: pointer;
 }
-
-.skill-card:hover {
+.skill-card:hover { /* Hover Effect */
 transform: translateY(-5px);
 box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
-
-.skill-icon {
+.skill-icon { /* Icon Styles */
 width: 50px;   
 height: 50px;
 font-size: 2.5rem;
 color: var(--text-dark);
 margin-bottom: 10px;
 }
-
-.skill-label {
+.skill-label { /* Skill Name */
 font-weight: bold;
 margin-bottom: 5px;
 display: block;
 }
-
-.skill-desc {
+.skill-desc { /* Skill Description */
 font-size: 0.85rem;
-color: #555;
+color: var(--text-dark);
 }
 
+/* Modal Customization */
 .modal-content {
     background-color: var(--light-bg);
 }
 
-.experience-stat {
+/* Simple statistics */
+.stat { /* Container for each statistic */
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-
-.experience-icon {
+.stat-icon { /* Icon Styles */
   font-size: 2.2rem;
   color:var(--primary-color);
   flex-shrink: 0;
-}
-
-.experience-text {
+} 
+.stat-text { /* Text Container */
   display: flex;
   flex-direction: column;
 }
-
-.experience-title {
+.stat-title { /* Title Styles */
   font-weight: 600;
   font-size: 1.1rem;
-}
-
-.experience-desc {
-  font-size: 0.85rem;
-  opacity: 0.75;
 }

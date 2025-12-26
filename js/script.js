@@ -288,7 +288,7 @@ if (typeof projects !== "undefined") {
 
     project.features.forEach(feature => {
       const tag = document.createElement("span");
-      tag.className = "project-tag";
+      tag.className = "tag";
       tag.textContent = feature;
       tagsContainer.appendChild(tag);
     });
