@@ -830,8 +830,8 @@ body {
 }
 
 .project-tag {
-  background-color: #2f3328;  
-  color: #f7f4e8;              
+  background-color: var(--primary-color);  
+  color: var(--text-light);              
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
   font-size: 0.85rem;
