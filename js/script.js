@@ -281,123 +281,145 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("header error:", err));
 });
 
-if (typeof projects !== "undefined") {
+function initProjects() {
+  if (typeof projects !== "undefined") {
 
-  function openProjectModal(projectId) {
-    const project = projects.find(p => p.id === projectId);
-    if (!project) return;
+    function openProjectModal(projectId) {
+      const project = projects.find(p => p.id === projectId);
+      if (!project) return;
 
-    const tagsContainer = document.getElementById("projectModalTags");
-    tagsContainer.innerHTML = ""; 
+      const tagsContainer = document.getElementById("projectModalTags");
+      tagsContainer.innerHTML = ""; 
 
-    project.features.forEach(feature => {
-      const tag = document.createElement("span");
-      tag.className = "tag";
-      tag.textContent = feature;
-      tagsContainer.appendChild(tag);
-    });
+      project.features.forEach(feature => {
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = feature;
+        tagsContainer.appendChild(tag);
+      });
 
 
-    document.getElementById("projectModalTitle").textContent = project.title;
-    document.getElementById("projectModalDescription").textContent = project.description;
-    document.getElementById("projectModalGithub").href = project.github;
+      document.getElementById("projectModalTitle").textContent = project.title;
+      document.getElementById("projectModalDescription").textContent = project.description;
+      document.getElementById("projectModalGithub").href = project.github;
 
-    const videoElement = document.getElementById("projectModalVideo");
-    videoElement.pause();
-    videoElement.src = project.video;
-    videoElement.load();
-    videoElement.play();
+      const videoElement = document.getElementById("projectModalVideo");
+      videoElement.pause();
+      videoElement.src = project.video;
+      videoElement.load();
+      videoElement.play();
 
-    new bootstrap.Modal(document.getElementById("projectModal")).show();
-  }
+      new bootstrap.Modal(document.getElementById("projectModal")).show();
+    }
 
-  // 1. Swiper (home page)
-  const swiperWrapper = document.getElementById("projectsSwiper");
-  if (swiperWrapper) {
-    projects.forEach(p => {
-      swiperWrapper.innerHTML += `
-        <div class="swiper-slide" style="cursor: pointer">
-          <div class="card card-custom project-card" data-project-id="${p.id}">
-            <img src="${p.image}" class="card-img-top project-card-img" alt="${p.title}">
-            <div id="projectLocation" class="position-absolute top-0 end-0 m-3 badge bg-secondary">${p.location}</div>
-            <div class="card-body text-center">
-              <div class="date-text mb-2">${p.category}</div>
-              <h3 class="subtitle">${p.title}</h3>
+    // 1. Swiper (home page)
+    const swiperWrapper = document.getElementById("projectsSwiper");
+    if (swiperWrapper) {
+      projects.forEach(p => {
+        swiperWrapper.innerHTML += `
+          <div class="swiper-slide" style="cursor: pointer">
+            <div class="card card-custom project-card" data-project-id="${p.id}">
+              <img src="${p.image}" class="card-img-top project-card-img" alt="${p.title}">
+              <div id="projectLocation" class="position-absolute top-0 end-0 m-3 badge bg-secondary">${p.location}</div>
+              <div class="card-body text-center">
+                <div class="date-text mb-2">${p.category}</div>
+                <h3 class="subtitle">${p.title}</h3>
+              </div>
             </div>
           </div>
-        </div>
-      `;
-    });
+        `;
+      });
 
-    // Attach click listeners for swiper cards
-    document.querySelectorAll(".project-card").forEach(card => {
-      card.addEventListener("click", () => {
-        const id = card.dataset.projectId;
-        openProjectModal(id);
+      // Attach click listeners for swiper cards
+      document.querySelectorAll(".project-card").forEach(card => {
+        card.addEventListener("click", () => {
+          const id = card.dataset.projectId;
+          openProjectModal(id);
+        });
+      });
+
+      // Initialize Swiper AFTER slides added
+      new Swiper(".worksSwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        breakpoints: {
+          768: { slidesPerView: 2 },
+          1200: { slidesPerView: 3 }
+        }
+      });
+    }
+
+    // 2. Projects grid (projects.html)
+    const grid = document.getElementById("projectsGrid");
+    if (grid) {
+      projects.forEach(p => {
+        grid.innerHTML += `
+          <div class="col-md-4 mb-4">
+            <div class="card card-custom project-card h-100" data-project-id="${p.id}" style="cursor: pointer">
+              <img src="${p.image}" class="card-img-top project-card-img" alt="${p.title}">
+              <div id="projectLocation" class="position-absolute top-0 end-0 m-3 badge bg-secondary">${p.location}</div>
+              <div class="card-body text-center">
+                <div class="date-text mb-2">${p.category}</div>
+                <h3 class="subtitle">${p.title}</h3>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      // Attach click listeners for grid cards
+      document.querySelectorAll(".project-card").forEach(card => {
+        card.addEventListener("click", () => {
+          const id = card.dataset.projectId;
+          openProjectModal(id);
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const navContainers = document.querySelectorAll(".nav-container");
+
+      navContainers.forEach(container => {
+        let html = '<ul class="list-unstyled">';
+        pages.forEach(p => {
+          html += `<li class="mb-2"><a href="${p.link}" class="footer-link">${p.title}</a></li>`;
+        });
+        html += '</ul>';
+        container.innerHTML = html;
       });
     });
+  }
+}
 
-    // Initialize Swiper AFTER slides added
-    new Swiper(".worksSwiper", {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      },
-      breakpoints: {
-        768: { slidesPerView: 2 },
-        1200: { slidesPerView: 3 }
+// Fetch project modals and initialize projects
+function loadProjectModals() {
+  const repoBase = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost")
+    ? "/" 
+    : "/Website-Resume/";
+
+  fetch(repoBase + "components/projectModals.html")
+    .then(res => res.text())
+    .then(html => {
+      const container = document.getElementById("projectModalContainer");
+      if (container) {
+        container.innerHTML = html;
+        initProjects();
       }
     });
-  }
-
-  // 2. Projects grid (projects.html)
-  const grid = document.getElementById("projectsGrid");
-  if (grid) {
-    projects.forEach(p => {
-      grid.innerHTML += `
-        <div class="col-md-4 mb-4">
-          <div class="card card-custom project-card h-100" data-project-id="${p.id}" style="cursor: pointer">
-            <img src="${p.image}" class="card-img-top project-card-img" alt="${p.title}">
-            <div id="projectLocation" class="position-absolute top-0 end-0 m-3 badge bg-secondary">${p.location}</div>
-            <div class="card-body text-center">
-              <div class="date-text mb-2">${p.category}</div>
-              <h3 class="subtitle">${p.title}</h3>
-            </div>
-          </div>
-        </div>
-      `;
-    });
-
-    // Attach click listeners for grid cards
-    document.querySelectorAll(".project-card").forEach(card => {
-      card.addEventListener("click", () => {
-        const id = card.dataset.projectId;
-        openProjectModal(id);
-      });
-    });
-  }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const navContainers = document.querySelectorAll(".nav-container");
-
-  navContainers.forEach(container => {
-    let html = '<ul class="list-unstyled">';
-    pages.forEach(p => {
-      html += `<li class="mb-2"><a href="${p.link}" class="footer-link">${p.title}</a></li>`;
-    });
-    html += '</ul>';
-    container.innerHTML = html;
-  });
-});
-
-
 }
+
+// Run after DOM ready
+document.addEventListener("DOMContentLoaded", () => {
+  loadProjectModals();
+});
 
 })(jQuery);
