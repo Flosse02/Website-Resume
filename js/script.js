@@ -207,7 +207,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   let socialsHTML = "";
-  const repoBase = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost")
+  var repoBase = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost")
   ? "/" // Localhost root
   : "/Website-Resume/"; // GitHub Pages repo path
 
