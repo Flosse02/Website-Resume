@@ -207,7 +207,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   let socialsHTML = "";
-  const repoBase = "/Website-Resume/"; // GitHub Pages repo path
+  const repoBase = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost")
+  ? "/" // Localhost root
+  : "/Website-Resume/"; // GitHub Pages repo path
+
   fetch(repoBase + "components/socials.html")
     .then(res => res.text())
     .then(html => socialsHTML = html)
