@@ -1,7 +1,4 @@
-var repoBase = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost")
-  ? "/" // Localhost root
-  : "/Website-Resume/"; // GitHub Pages repo path
-
+const repoBase = document.querySelector('base')?.getAttribute('href') || '/';
 const projects = [
    {
     id: "wysp",
