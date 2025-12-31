@@ -207,9 +207,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   let socialsHTML = "";
-  var repoBase = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost")
-  ? "/" // Localhost root
-  : "/Website-Resume/"; // GitHub Pages repo path
+  const repoBase = document.querySelector('base')?.getAttribute('href') || '/';
+
 
   fetch(repoBase + "components/socials.html")
     .then(res => res.text())
@@ -402,9 +401,8 @@ function initProjects() {
 
 // Fetch project modals and initialize projects
 function loadProjectModals() {
-  const repoBase = (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost")
-    ? "/" 
-    : "/Website-Resume/";
+  const repoBase = document.querySelector('base')?.getAttribute('href') || '/';
+
 
   fetch(repoBase + "components/projectModals.html")
     .then(res => res.text())
