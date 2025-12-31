@@ -207,8 +207,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   let socialsHTML = "";
-  const repoBase = document.querySelector('base')?.getAttribute('href') || '/';
-
 
   fetch(repoBase + "components/socials.html")
     .then(res => res.text())
@@ -401,8 +399,6 @@ function initProjects() {
 
 // Fetch project modals and initialize projects
 function loadProjectModals() {
-  const repoBase = document.querySelector('base')?.getAttribute('href') || '/';
-
 
   fetch(repoBase + "components/projectModals.html")
     .then(res => res.text())

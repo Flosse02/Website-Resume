@@ -1,4 +1,3 @@
-const repoBase = document.querySelector('base')?.getAttribute('href') || '/';
 const projects = [
    {
     id: "wysp",
