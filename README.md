@@ -1,4 +1,28 @@
-# Website-Resume
+# Website Resume – Ewan van de Nadort
+🌐 https://ewanvandenadort.com
+
+Personal portfolio / résumé website showcasing my projects, experience, and skills.
+
+---
+
+## 🖥️ Preview
+Live site: https://ewanvandenadort.com  
+
+---
+
+## 🛠️ Built With
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap
+- Swiper.js
+
+---
+
+## 📬 Contact
+If you have any questions about this site or my work, feel free to reach out via  
+👉 [https://ewanvandenadort.com](https://ewanvandenadort.com/pages/contact.html)
+
 
 
 # Credits
