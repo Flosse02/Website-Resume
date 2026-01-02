@@ -21,7 +21,7 @@ Live site: https://ewanvandenadort.com
 
 ## 📬 Contact
 If you have any questions about this site or my work, feel free to reach out via  
-👉 [https://ewanvandenadort.com](https://ewanvandenadort.com/pages/contact.html)
+👉 https://ewanvandenadort.com/pages/contact.html
 
 
 
