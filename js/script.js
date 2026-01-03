@@ -298,7 +298,27 @@ function initProjects() {
 
       document.getElementById("projectModalTitle").textContent = project.title;
       document.getElementById("projectModalDescription").textContent = project.description;
-      document.getElementById("projectModalGithub").href = project.github;
+      const actionBtn = document.getElementById("projectModalAction");
+
+      if (project.successor != "") {
+        actionBtn.textContent = "See Successor";
+        actionBtn.removeAttribute("href");
+        actionBtn.removeAttribute("target");
+        actionBtn.onclick = (e) => {
+          e.preventDefault()
+          bootstrap.Modal.getInstance(document.getElementById("projectModal")).hide();
+          openProjectModal(project.successor);
+        };
+        actionBtn.style.display = "inline-block";
+      } else if (project.github) {
+        actionBtn.textContent = "View on GitHub";
+        actionBtn.href = project.github;
+        actionBtn.target = "_blank";
+        actionBtn.onclick = null;
+        actionBtn.style.display = "inline-block";
+      } else {
+        actionBtn.style.display = "none";
+      }
 
       const videoElement = document.getElementById("projectModalVideo");
       videoElement.pause();
