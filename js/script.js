@@ -320,11 +320,28 @@ function initProjects() {
         actionBtn.style.display = "none";
       }
 
-      const videoElement = document.getElementById("projectModalVideo");
-      videoElement.pause();
-      videoElement.src = project.video;
-      videoElement.load();
-      videoElement.play();
+      const videoEl = document.getElementById("projectModalVideo");
+      const imgEl = document.getElementById("projectModalImage");
+
+      videoEl.pause();
+      videoEl.removeAttribute("src");
+      videoEl.load();
+      videoEl.style.display = "none";
+
+      imgEl.src = "";
+      imgEl.style.display = "none";
+
+      if (project.video) {
+        if (project.video.match(/\.(mp4|webm|ogg)$/i)) {
+          videoEl.src = project.video;
+          videoEl.style.display = "block";
+          videoEl.play().catch(() => {});
+        } else if (project.video.match(/\.(png|jpg|jpeg|gif|webp)$/i)) {
+          imgEl.src = project.video;
+          imgEl.style.display = "block";
+        }
+      }
+
 
       new bootstrap.Modal(document.getElementById("projectModal")).show();
     }
