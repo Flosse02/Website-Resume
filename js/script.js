@@ -305,9 +305,19 @@ function initProjects() {
         actionBtn.removeAttribute("href");
         actionBtn.removeAttribute("target");
         actionBtn.onclick = (e) => {
-          e.preventDefault()
-          bootstrap.Modal.getInstance(document.getElementById("projectModal")).hide();
-          openProjectModal(project.successor);
+          e.preventDefault();
+          
+          const modalEl = document.getElementById("projectModal");
+          const modal = bootstrap.Modal.getInstance(modalEl);
+          const successorId = project.successor;
+
+          const onHidden = () => {
+            modalEl.removeEventListener("hidden.bs.modal", onHidden);
+            openProjectModal(successorId);
+          };
+
+          modalEl.addEventListener("hidden.bs.modal", onHidden);
+          modal.hide();
         };
         actionBtn.style.display = "inline-block";
       } else if (project.github) {
