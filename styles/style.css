@@ -915,3 +915,10 @@ color: var(--text-dark);
   font-weight: 600;
   font-size: 1.1rem;
 }
+
+.divider {
+  height: 1px;
+  background-color: #ccc; 
+  margin: 1.5rem 0;    
+  width: 100%;          
+}
