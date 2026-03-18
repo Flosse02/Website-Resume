@@ -320,14 +320,17 @@ function initProjects() {
           modal.hide();
         };
         actionBtn.style.display = "inline-block";
-      } else if (project.github) {
+      } else if (project.github != null) {
         actionBtn.textContent = "View on GitHub";
         actionBtn.href = project.github;
         actionBtn.target = "_blank";
         actionBtn.onclick = null;
         actionBtn.style.display = "inline-block";
       } else {
-        actionBtn.style.display = "none";
+        actionBtn.textContent = "No Public Github Avaliable"
+        actionBtn.removeAttribute('href');
+        actionBtn.onclick = null;
+
       }
 
       const videoEl = document.getElementById("projectModalVideo");

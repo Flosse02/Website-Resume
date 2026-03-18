@@ -886,6 +886,16 @@ color: var(--text-dark);
     background-color: var(--light-bg);
 }
 
+#projectModalImage {
+    display: block;
+    max-width: 100%;  /* never exceed container width */
+    max-height: 70vh; /* never exceed 70% of viewport height */
+    width: auto;
+    height: auto;
+    object-fit: contain; /* scale image without cropping */
+    margin: 0 auto;      /* center horizontally */
+}
+
 /* Simple statistics */
 .stat { /* Container for each statistic */
   display: flex;
