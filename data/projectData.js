@@ -2,7 +2,7 @@ const projects = [
   {
     id: "continiuum-enginering-psv",
     title: "PSV",
-    category: "App Development",
+    category: "App / Web Development",
     image: repoBase + "media/images/continuumEngineering.png",
     video: repoBase + "media/images/continuumEngineering2.png",
     successor: "",
@@ -18,12 +18,44 @@ const projects = [
       "Full-Stack Development",
       "Commercial Project",
       "Legacy System Modernisation",
-      "Component Migration"
+      "Component Migration",
+      "Node js",
+      "Docker",
+      "Bash",
+      "Java Script",
     ],
     github: null
   },
 
-   {
+  {
+    id: "continiuum-enginering-fms",
+    title: "FMS",
+    category: "App / Web Development",
+    image: repoBase + "media/images/continuumEngineering.png",
+    video: repoBase + "media/images/continuumEngineering3.png",
+    successor: "",
+    location: "Continiuum Engineering",
+    description: "Took over the development of a legacy flange monitoring application, performing a full audit and modernising the stack by upgrading dependencies and removing deprecated components. " +
+                 "Refactored and stabilised the system to improve performance and maintainability. Led end-to-end Android deployment, resolving native-level issues (Gradle," +
+                 " device compatibility, hardware interactions) to ensure reliable field performance",
+    features: [
+      "Typescript",
+      "React",
+      "React Native",
+      "Android Development",
+      "Full-Stack Development",
+      "Commercial Project",
+      "Legacy System Modernisation",
+      "Component Migration",
+      "Node js",
+      "Docker",
+      "Bash",
+      "Java Script",
+    ],
+    github: null
+  },
+
+  {
     id: "wysp",
     title: "Wsyp",
     category: "UI/UX Design",
