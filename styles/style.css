@@ -384,6 +384,9 @@ body {
     padding-bottom: 50px;
     --swiper-pagination-bottom: 0px;
 }
+.content-title {
+    line-height: 1.1  !important;; 
+}
 
 .servicesSwiper,
 .testimonialsSwiper {
