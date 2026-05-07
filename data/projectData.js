@@ -154,12 +154,29 @@ const projects = [
   },
 
   {
+    id: "smartHomeV4",
+    title: "Smarthome Device V4",
+    category: "UI/UX + Electrical Engineering",
+    image: repoBase + "media/images/smartHomeV4.png",
+    video: repoBase + "media/videos/smartHomeV4.mp4",
+    successor: "",
+    location: "Home",
+    description: "A basic IOT based smarthome with google calendar integration, music playback and basic home automation. This is the second version with improved features and design. (WIP)",
+    features: [
+      "Custom Raspberry Pi setup",
+      "Works with Google Calendar",
+      "User-friendly dashboard"
+    ],
+    github: "https://github.com/Flosse02/smartHomeV4"
+  },
+
+  {
     id: "smartHomeV3",
     title: "Smarthome Device V3",
     category: "UI/UX + Electrical Engineering",
     image: repoBase + "media/images/smartHomeV3.png",
     video: repoBase + "media/videos/smartHomeV3.mp4",
-    successor: "",
+    successor: "smartHomeV4",
     location: "Home",
     description: "A basic IOT based smarthome with google calendar integration, music playback and basic home automation. This is the second version with improved features and design. (WIP)",
     features: [
